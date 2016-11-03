@@ -5,7 +5,6 @@ import io.swagger.model.Topic;
 import io.swagger.model.Word;
 import io.swagger.annotations.*;
 
-import org.librairy.bluebottle.load.BlueBottleLoader;
 import org.librairy.model.domain.resources.Resource;
 import org.librairy.model.modules.EventBus;
 import org.librairy.storage.UDM;
