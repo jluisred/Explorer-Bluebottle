@@ -1,0 +1,217 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: OEG/Blueblottle API
+  description: Exposing document topics in REST API
+  version: "1.0.0"
+# the domain of the service
+host: drinventor.dia.fi.upm.es
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /documents/{id}/topicDistribution:
+    get:
+      summary: Get Document's Topic
+      description: |
+        This operation returns a list of weighted LDA topics associated to a particular document D. Each topic is a list of ranked words.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the document.
+          required: true
+          type: string
+      tags:
+        - Documents
+        - Topics
+      responses:
+        200:
+          description: An array of topics
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TopicDistribution'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /documents/{id}:
+    post:
+      summary: Provide a new document to be indexed
+      description: |
+        This operation allows to add a new document that is automatically indexed in the collection and annotated with topics. 
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the document
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Book and its chapters in a textual form. 
+          required: false
+          schema:
+            $ref: "#/definitions/Book"
+      tags:
+        - Documents
+      responses:
+        "405":
+          description: Validation exception
+        "400":
+          description: Invalid ID supplied
+        200:
+          description: ID of the document added to the collection
+          schema:
+            type: string
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /collection:
+    get:
+      summary: Get Details about the indexed collection
+      description: |
+        This method returns a set of attributes about the collection of documents that have been indexed in the backend
+      produces:
+        - application/json
+      tags:
+        - Collection
+      responses:
+        200:
+          description: An object with different attributes shaping the status of the collection
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Collection'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+ 
+definitions:
+
+  TopicDistribution:
+    type: object
+    properties:
+      topic:
+        type: array
+        items:
+              $ref: '#/definitions/Word'
+        description: Words belonging to a particular topic
+      weight:
+        type: number
+        format: double
+        description: "Importancy of the topic inside the document"
+        
+  Word:
+    type: object
+    properties:
+      surface:
+        type: string
+        description: Word belonging to a particular topic
+      score:
+        type: number
+        format: double
+        description: "Importancy of the word inside the topic"
+        
+  Collection:
+    type: object
+    properties:
+      numDocuments:
+        type: number
+        format: integer
+        description: "Number of documents in the collection"
+      LDA:
+        type: boolean
+        description: "Indicates if the Topic Modelling has been calculated for this collection"
+      dateLDA:
+        type: string
+        description: "date/time when the last LDA iteration was performed"
+      numTopics:
+        type: number
+        format: integer
+        description: "Number of topics found in the corpus"
+  Book:
+    type: object
+    properties:
+      isbn:
+        type: string
+        description: "ID of the document"
+      chapters:
+        type: array
+        items: 
+          $ref: '#/definitions/Chapter'
+        description: List of chapters belonging to a document
+      name:
+        type: string
+        description: "Title of the Document"
+      subtitle:
+        type: string
+        description: "Subtitle of the Document"      
+      summary:
+        type: string
+        description: "Summary of the Document"  
+      avgRating:
+        type: number
+        format: int
+        description: "Average Rating"  
+      numRating:
+        type: number
+        format: int
+        description: "Number of ratings available"  
+      shares:
+        type: number
+        format: int
+        description: "Number of times being shared"  
+      status:
+        type: string
+      seoBook:
+        type: string
+      bookBover:
+        type: string
+      contentType:
+        type: string  
+      editionYear:
+        type: string   
+        description: "Year of edition"
+      authors:
+        type: array
+        items: 
+          $ref: "#/definitions/Author"
+        description: "List of authors"
+
+  Author:
+    type: string
+
+  
+  Chapter:
+    type: object
+    properties:
+      id:
+        type: string
+        description: "ID of the chapter inside the book"
+      text:
+        type: string
+        description: "Textual content of the chapter"
+        
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
