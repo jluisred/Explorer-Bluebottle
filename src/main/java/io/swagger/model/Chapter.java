@@ -10,49 +10,49 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * Word
+ * Chapter
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-11-04T11:07:26.201Z")
 
-public class Word   {
-  private String surface = null;
+public class Chapter   {
+  private String id = null;
 
-  private Double score = null;
+  private String text = null;
 
-  public Word surface(String surface) {
-    this.surface = surface;
+  public Chapter id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Word belonging to a particular topic
-   * @return surface
+   * ID of the chapter inside the book
+   * @return id
   **/
-  @ApiModelProperty(value = "Word belonging to a particular topic")
-  public String getSurface() {
-    return surface;
+  @ApiModelProperty(value = "ID of the chapter inside the book")
+  public String getId() {
+    return id;
   }
 
-  public void setSurface(String surface) {
-    this.surface = surface;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public Word score(Double score) {
-    this.score = score;
+  public Chapter text(String text) {
+    this.text = text;
     return this;
   }
 
    /**
-   * Importancy of the word inside the topic
-   * @return score
+   * Textual content of the chapter
+   * @return text
   **/
-  @ApiModelProperty(value = "Importancy of the word inside the topic")
-  public Double getScore() {
-    return score;
+  @ApiModelProperty(value = "Textual content of the chapter")
+  public String getText() {
+    return text;
   }
 
-  public void setScore(Double score) {
-    this.score = score;
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -64,23 +64,23 @@ public class Word   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Word word = (Word) o;
-    return Objects.equals(this.surface, word.surface) &&
-        Objects.equals(this.score, word.score);
+    Chapter chapter = (Chapter) o;
+    return Objects.equals(this.id, chapter.id) &&
+        Objects.equals(this.text, chapter.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(surface, score);
+    return Objects.hash(id, text);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Word {\n");
+    sb.append("class Chapter {\n");
     
-    sb.append("    surface: ").append(toIndentedString(surface)).append("\n");
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }
