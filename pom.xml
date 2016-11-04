@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.librairy</groupId>
-    <artifactId>harvester-bluebottle</artifactId>
+    <artifactId>explorer-bluebottle</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>harvester-bluebottle</name>
-    <description>Harvester Bluebottle</description>
-    <url>https://github.com/jluisred/Harvester-BlueBottle</url>
+    <name>explorer-bluebottle</name>
+    <description>Explorer Bluebottle</description>
+    <url>https://github.com/jluisred/Explorer-BlueBottle</url>
     <organization>
         <name>Ontology Engineering Group</name>
         <url>http://www.oeg-upm.net</url>
@@ -28,7 +28,7 @@
     </licenses>
     <inceptionYear>2016</inceptionYear>
     <scm>
-        <url>https://github.com/jluisred/Harvester-BlueBottle</url>
+        <url>https://github.com/jluisred/Explorer-BlueBottle</url>
     </scm>
     <developers>
         <developer>
