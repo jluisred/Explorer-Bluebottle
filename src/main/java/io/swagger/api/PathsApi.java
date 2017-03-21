@@ -1,20 +1,17 @@
 package io.swagger.api;
 
-import io.swagger.model.Error;
-import io.swagger.model.Resource;
-
-import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.model.Resource;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-01-16T15:47:55.484Z")
 
@@ -33,7 +30,7 @@ public interface PathsApi {
             @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
             @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
             @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-            @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+            @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
             );
 
@@ -49,7 +46,7 @@ public interface PathsApi {
             @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
             @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
             @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-            @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+            @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
             );
 
@@ -66,7 +63,7 @@ public interface PathsApi {
             @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
             @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
             @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-            @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+            @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
             );
 
@@ -82,7 +79,7 @@ public interface PathsApi {
             @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
             @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
             @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-            @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+            @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
             );
 
@@ -99,7 +96,7 @@ public interface PathsApi {
             @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
             @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
             @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-            @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+            @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
             );
 
@@ -115,7 +112,7 @@ public interface PathsApi {
         @ApiParam(value = "Maximun Length of the path",required=false ) @RequestParam(value="maxLength", required=false ) Integer maxLength,
         @ApiParam(value = "Minimum score between resources") @RequestParam(value="minScore", required=false ) Double minScore,
         @ApiParam(value = "Specify if resources in path are from the same type than origin") @RequestParam(value="sameType",required=false) Boolean sameType,
-        @ApiParam(value = "Timeout in minutes") @RequestParam(value="sameType",required=false) Integer minutesTimeout
+        @ApiParam(value = "Timeout in minutes") @RequestParam(value="minutesTimeout",required=false) Integer minutesTimeout
 
         );
 
