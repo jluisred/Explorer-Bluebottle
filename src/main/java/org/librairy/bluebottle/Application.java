@@ -7,29 +7,26 @@
 
 package org.librairy.bluebottle;
 
+import org.librairy.bluebottle.conf.Conf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Created on 21/05/16:
- *
- * @author cbadenes
- */
+
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan({"org.librairy", "io.swagger"})
-@PropertySource({"classpath:boot.properties"})
+@ComponentScan(basePackages = "io.swagger")
+
+//@ComponentScan({"org.librairy.boot", "io.swagger", "org.librairy.storage.system.column", "org.librairy.modeler.lda.api"})
+//@PropertySource({"classpath:boot.properties"})
 public class Application {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
@@ -55,9 +52,11 @@ public class Application {
 
                 port = Integer.valueOf(args[0]);
             }
-            
-			String var = System.getenv("LIBRAIRY_COLUMNDB_HOST");
-            System.out.println(var);
+            loadEnvironment();
+
+
+    		//new SpringApplication(Application.class).run(args);
+
             ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
             
             LOG.info("Listening on port: " + port);
@@ -68,4 +67,39 @@ public class Application {
         }
 
     }
+    
+    
+	private static void loadEnvironment() {
+		
+		
+		 String varApi = System.getenv("LIBRAIRY_EXPLORER_API_ENDPOINT");
+		 String varDomainID = System.getenv("LIBRAIRY_EXPLORER_DOMAIN_ID");
+		 String varEndpoint = System.getenv("LIBRAIRY_HARVESTER_ENDPOINT_CLIENT");
+		 String varApikey = System.getenv("LIBRAIRY_HARVESTER_ENDPOINT_CLIENT_APIKEY");
+
+        //String var = "testIdCorpus";
+
+        if (varApi != null && !varApi.isEmpty()) 
+        	Conf.setApiURL(varApi);
+        if (varDomainID != null && !varDomainID.isEmpty()) 
+        	Conf.setDomainUUID(varDomainID);
+        if (varApikey != null && !varApikey.isEmpty()) 
+          	Conf.setApikey(varApikey);
+         if (varEndpoint != null && !varEndpoint.isEmpty()) 
+           	Conf.setEndpointURL(varEndpoint);
+
+        
+        System.out.println("====    EXPLORER CONFIGURATION    ====");
+
+        System.out.println("API Endpoint: " + Conf.getApikey());
+        System.out.println("Domain Name: " + Conf.getDomainUUID());
+        System.out.println("Endpoint URL: " + Conf.getEndpointURL());
+        System.out.println("API key: " + Conf.getApikey());
+        
+        System.out.println("=======================================");
+
+	}
 }
+
+
+

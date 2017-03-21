@@ -18,7 +18,7 @@ public class SwaggerDocumentationConfig {
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title("OEG/Blueblottle API")
-            .description("Exposing document topics in REST API")
+            .description("Exposing Topic, Tags, and Discovery Paths functionalities by UPM for Bluebottle document collection")
             .license("")
             .licenseUrl("")
             .termsOfServiceUrl("")
@@ -29,7 +29,7 @@ public class SwaggerDocumentationConfig {
 
     @Bean
     public Docket customImplementation(){
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_12)
                 .select()
                     .apis(RequestHandlerSelectors.basePackage("io.swagger.api"))
                     .build()

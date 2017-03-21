@@ -3,6 +3,8 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -14,12 +16,14 @@ import java.math.BigDecimal;
  * Collection
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-11-04T11:07:26.201Z")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class Collection   {
   private BigDecimal numDocuments = null;
 
   private Boolean LDA = null;
 
+ 
   private String dateLDA = null;
 
   private BigDecimal numTopics = null;

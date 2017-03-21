@@ -18,9 +18,9 @@ import java.util.List;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-11-02T11:29:00.407Z")
 
 public class Topic   {
+  private Double weight = null;
   private List<Word> topic = new ArrayList<Word>();
 
-  private Double weight = null;
 
   public Topic topic(List<Word> topic) {
     this.topic = topic;
